@@ -1,0 +1,29 @@
+#!/bin/sh
+if [ $# != 1 ]; then
+echo "usage: $0 <ProjectName>" 1>&2
+exit 1
+fi
+if [ "$1" = "--help" -o "$1" = "-h" ]; then
+{
+echo "This command creates an empty project with template files";
+echo
+echo "usage: $0 <ProjectName>"
+} 1>&2
+exit 0;
+fi
+
+name=`basename "$1"`
+dir=`dirname "$1"`
+cd "$dir"
+if [ -x "$name" ]; then
+echo "An object named $name already exists." 1>&2
+echo "Please delete this object and try again." 1>&2
+exit 1
+fi
+template=~/.template-project/templates/linux-project
+if [ ! -d "$template" ]; then
+template="/usr/local/share/template-project/templates/linux-project"
+fi
+echo "Using template: $template"
+cp -r "$template" "$name" || exit 1
+cd "$name" || exit 1

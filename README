@@ -1,0 +1,29 @@
+This is a set of scripts which allow one to quickly create skeleton 
+projects based on templates. Users can override the system templates by 
+creating local templates inside their home directories in the following 
+directory:
+
+  ~/.template-project/templates/
+
+It's mainly for my own use, but others may find it helpful.
+
+
+Installation:
+
+  git clone https://github.com/artcfox/template-project
+  cd template-project
+  sudo ./install.sh
+
+
+Example:
+
+  user@debian:~$ linux-project foobar
+  Using template: /usr/local/share/template-project/templates/linux-project
+  user@debian:~$ cd foobar
+  user@debian:~/foobar$ ls
+  main.c  Makefile
+  user@debian:~/foobar$ make
+  gcc -flto -O3 -MD -MP -MT main.o -MF main.o.d -Wall -Wextra -Winline -gdwarf-2 -std=gnu11   -c -o main.o main.c
+  gcc -flto -O3  main.o    -o main
+  user@debian:~/foobar$ ./main
+  Hello World!
