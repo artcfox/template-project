@@ -11,6 +11,7 @@ CXXFLAGS    += -std=gnu++11
 CPPFLAGS     = 
 LDFLAGS      = $(COMPILE_LINK)
 LDFLAGS     += 
+LDLIBS      += 
 EXECUTABLE  ?= main
 OBJECTS      = main.o
 OBJECTS     += 
